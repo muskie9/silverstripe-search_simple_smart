@@ -406,10 +406,10 @@ class SearchEngineBasicForm extends Form
             Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
         }
 
-        Requirements::javascript('sunnysideup/search_simple_smart: searchengine/javascript/SearchEngineInitFunctions.js');
+        Requirements::javascript('sunnysideup/search_simple_smart: client/javascript/SearchEngineInitFunctions.js');
 
         if ($this->useInfiniteScroll) {
-            Requirements::javascript('sunnysideup/search_simple_smart: searchengine/javascript/jquery.infinitescroll.min.js');
+            Requirements::javascript('sunnysideup/search_simple_smart: client/javascript/jquery.infinitescroll.min.js');
             $this->customScript[] = 'SearchEngineInitFunctions.useInfiniteScroll = true;';
         }
 
@@ -418,7 +418,7 @@ class SearchEngineBasicForm extends Form
         }
 
         if ($this->useAutoComplete) {
-            Requirements::javascript('sunnysideup/search_simple_smart: searchengine/javascript/awesomplete.min.js');
+            Requirements::javascript('sunnysideup/search_simple_smart: client/javascript/awesomplete.min.js');
             $this->customScript[] = 'SearchEngineInitFunctions.useAutoComplete = true;';
             $hasKeywordFile = ExportKeywordList::get_js_keyword_file_name($includeBase = false);
             if ($hasKeywordFile) {
@@ -433,8 +433,8 @@ class SearchEngineBasicForm extends Form
         Requirements::customScript(implode("\n", $this->customScript), 'SearchEngineInitFunctions');
 
         //css settings
-        Requirements::themedCSS('sunnysideup/search_simple_smart: awesomplete', 'searchengine');
-        Requirements::themedCSS('sunnysideup/search_simple_smart: SearchEngine', 'searchengine');
+        Requirements::css('sunnysideup/search_simple_smart: client/css/awesomplete.css', 'searchengine');
+        Requirements::css('sunnysideup/search_simple_smart: client/css/SearchEngine.css', 'searchengine');
     }
 
     /**
